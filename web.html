@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My Portfolio</title>
+  <style>
+    body {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+
+    #header {
+      background-color: transparent;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #header .flip-container {
+      perspective: 1000px;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    #header .flipper {
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      position: relative;
+      width: 200px;
+      height: 250px;
+      margin: 0 auto;
+      transform-origin: center center;
+    }
+
+    #header .front,
+    #header .back {
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    #header .front {
+      z-index: 2;
+    }
+
+    #header .back {
+      transform: rotateY(180deg);
+    }
+
+    #header .flip-container:hover .flipper,
+    #header .flip-container.active .flipper {
+      transform: rotateY(180deg);
+    }
+
+    #header img {
+      border-radius: 5%;
+      width: 200px;
+      height: 250px;
+      object-fit: cover;
+      border: #ffffff 2px solid;
+    }
+
+    #social-media {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    #social-media a {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 10px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 20px;
+      transition: all 0.2s ease-in-out;
+      background-color: #3b5998;
+      border-radius: 5px;
+      width: 200px;
+      text-align: center;
+    }
+
+    #social-media a:hover {
+      color: #f1f1f1;
+      background-color: #646161;
+    }
+  </style>
+  <script>
+    function flipImage() {
+      var flipContainer = document.getElementById("flip-container");
+      flipContainer.classList.toggle("active");
+    }
+    function getRandomImage() {
+      var images = [
+        'https://cdn.wallpapersafari.com/98/60/amtOTo.jpg',
+        'https://c4.wallpaperflare.com/wallpaper/688/366/565/avengers-endgame-captain-america-marvel-cinematic-universe-hd-wallpaper-preview.jpg',
+        'https://images.hdqwalls.com/wallpapers/dr-strange-2020-42.jpg',
+        'https://rare-gallery.com/uploads/posts/357513-4k-wallpaper.jpg',
+        'https://rare-gallery.com/uploads/posts/349178-4k-wallpaper.png',
+        'https://rare-gallery.com/uploads/posts/1200992-Gwen-Stacy-Spider-Gwen-Spider-Gwen-Spider-Man-Marvel-Comics.jpg',
+        'https://rare-gallery.com/uploads/posts/343156-Miles-Morales-Spider-Gwen-Spider-Man-Into-the-Spider-Verse-Movie-Spider-Man.jpg',
+        'https://rare-gallery.com/uploads/posts/120339-team-iron-man-civil-war-spider-man-war-machine-vision-iron-man-black-panther-black-widow-marvel-comics-superheroes-hd-4k.jpg',
+        'https://rare-gallery.com/uploads/posts/4516382-rocket-raccoon-groot-baby-groot-guardians-of-the-galaxy-vol.-2-marvel-cinematic-universe-guardians-of-the-galaxy.png',
+        'https://rare-gallery.com/mocahbig/464505-Thor-Thor-2-The-Dark-World-Thor-Ragnarok-Avengers-Endgame.jpg',
+        'https://rare-gallery.com/uploads/posts/4564525-ultron-the-avengers-avengers-age-of-ultron.jpg',
+        'https://rare-gallery.com/mocahbig/464503-Thor-Thor-2-The-Dark-World-Thor-Ragnarok-Avengers-Endgame.jpg',
+        'https://rare-gallery.com/uploads/posts/102020-avengers-infinity-war-groot-8k.jpg',
+        'https://rare-gallery.com/uploads/posts/997157-Thanos-Marvel-Cinematic-Universe-The-Avengers-Avengers-Infinity-War.jpg',
+        'https://rare-gallery.com/uploads/posts/122533-ultra-instinct-goku-super-saiyan-silver-goku-dragon-ball-super-hd-5k.jpg',
+        'https://rare-gallery.com/uploads/posts/898061-Dragon-Ball-Super-Broly-Broly-Dragon-Ball-Super.jpg',
+        'https://rare-gallery.com/uploads/posts/5003008-dragon-ball-super-broly-dragon-ball-super-movie-dragon-ball-super-hd-4k-goku-movies-2019-movies-anime.jpg',
+        'https://rare-gallery.com/uploads/posts/936783-Dragon-Ball-Dragon-Ball-Super-Dragon-Ball-GT-Dragon-Ball-Super-Movie.jpg',
+        'https://rare-gallery.com/mocahbig/435091-One-Piece-anime-anime-boys-Monkey-D.-Luffy-KID-LUFFY.png',
+        'https://rare-gallery.com/mocahbig/79797-Monkey-D.-LuffyMonkey-D-Luffy.jpg',
+        'https://rare-gallery.com/mocahbig/1355563-Roronoa-Zoro-Green-HairRoronoa-Zoro.png',
+        'https://rare-gallery.com/uploads/posts/190424-roronoa-zoro-1920x1133.png',
+        'https://rare-gallery.com/uploads/posts/343162-Miles-Morales-Logo-Spider-Man-Into-the-Spider-Verse-Movie-Spider-Man.jpg',
+        'https://rare-gallery.com/uploads/posts/1177170-illustration-logo-red-background-Marvel-Comics-Spider-Man-symbols-spider-computer-wallpaper-font.jpg',
+        // Add more image URLs as needed
+      ];
+      var randomIndex = Math.floor(Math.random() * images.length);
+      return images[randomIndex];
+    }
+
+    window.addEventListener('load', function () {
+      var body = document.body;
+      body.style.backgroundImage = "url('" + getRandomImage() + "')";
+      body.style.backgroundColor = getRandomColor();
+    });
+
+  </script>
+</head>
+
+<body>
+  <div id="header">
+    <div class="flip-container" id="flip-container" onclick="flipImage()">
+      <div class="flipper">
+        <div class="front">
+          <img
+            src="pp/newpp.jpg"
+            alt="your name">
+        </div>
+        <div class="back">
+          <img
+            src="pp/pp.jpg"
+            alt="rojanparajuli">
+            <div class="back-title">Rojan Parajuli</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="social-media">
+    <a href="https://www.facebook.com/rojan.parajuli.104/" class="link"><i class="fab fa-youtube"></i> Facebook Profile</a></li>
+    <a href="https://github.com/rojanp" class="link"><i class="fab fa-github"></i> Github</a></li>
+    <a href="https://www.youtube.com/channel/UCnyiuM7kJYIdnZ4ISsrOetA" class="link"><i class="fab fa-youtube"></i> Subscribe on YouTube channel</a></li>
+    <a href="https://www.instagram.com/rojan_parajuli123/" class="link"><i class="fab fa-insta-in"></i> follow me on Instagram</a></li>
+    <a href="https://www.tiktok.com/@mr.padington123" class="link"><i class="fab fa-Tiktok-in"></i> Follow me onTiktok</a></li>
+    <a href="https://mail.google.com/mail/u/0/#inbox" class="link"><i class="fab fa-Mail-in"></i>Send mail on</a></li>
+    <a href="https://www.blogger.com/blog/posts/7735932428672732134?hl=en&tab=jj" class="link"><i class="fab fa-Blogger-in"></i> Read my Blogs</a></li>
+    <a href="https://www.pinterest.com/rojanparajuli13/" class="link"><i class="fab fa-pintrest-in"></i>pinterest</a></li>
+  </div>
+  <script>
+    function openFacebookApp() {
+      var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      var appScheme = isMobile ? 'fb://' : 'https://www.facebook.com/';
+      window.location.href = appScheme;
+    }
+  </script>
+</body>
+
+</html>
